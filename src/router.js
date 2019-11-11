@@ -1,5 +1,6 @@
 import express from "express";
 import createUserRoute from "./routes/userRouter";
+import createTodoRoute from "./routes/todoRouter";
 
 
 export default function createRouter() {
@@ -7,6 +8,8 @@ export default function createRouter() {
     const router = express.Router();
 
     router.use('/user',createUserRoute())
+    router.use('/todos',createTodoRoute())
+    
     //put this at the bottom of all route
     router.all("*", async (req, res) => {
         console.log(`-- Router not found -- url: ${req.originalUrl}, method: ${req.method}`);
