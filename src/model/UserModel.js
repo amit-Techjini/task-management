@@ -66,6 +66,10 @@ export default class UserModel extends BaseModel {
         }
     }
 
+    /**
+     * 
+     * @param {*} _id 
+     */
     async getUserData(_id) {
 
         const data = await this.model.findOne(
@@ -76,6 +80,10 @@ export default class UserModel extends BaseModel {
         return data;
     }
 
+    /**
+     * 
+     * @param {*} _id 
+     */
     async findUserById(_id) {
         try {
             return await this.model.findById(_id);
