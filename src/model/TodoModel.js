@@ -9,12 +9,38 @@ export default class TodoModel extends BaseModel {
         this.model = this.connection.model(this.name, this.schema);
     }
 
+    /**
+     * createTodo - function to create a todo
+     * 
+     * @param {*} user 
+     * @param {*} todoInfo 
+     */
     async createTodo(user, todoInfo) {
-        try{
+        try {
             const todo = await this.model.create({user, ...todoInfo});
-            console.log(todo);
+            // console.log(todo);
             return todo;
         } catch(err) {
+            return err;
+        }
+    }
+
+    /**
+     * updateTodoById - to update todo
+     * @param {*} todoId 
+     * @param {*} todoInfo 
+     */
+    async updateTodoById(todoId, todoInfo) {
+        try {
+            return await this.model.findByIdAndUpdate(
+                todoId,
+                todoInfo,
+                {
+                    new: true
+                }
+            )
+        } catch (err) {
+            console.log(err);
             return err;
         }
     }
