@@ -75,4 +75,12 @@ export default class UserModel extends BaseModel {
         );
         return data;
     }
+
+    async findUserById(_id) {
+        try {
+            return await this.model.findById(_id);
+        } catch(err) {
+            return err;
+        }
+    }
 }
