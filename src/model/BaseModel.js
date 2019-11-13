@@ -1,9 +1,10 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import getEnvVariable from "../utils/env";
 dotenv.config();
 
 mongoose.set('useCreateIndex', true);
-const mongoConnect = mongoose.connect(process.env.MONGODB_URL, {
+const mongoConnect = mongoose.connect(getEnvVariable("MONGODB_URL"), {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
